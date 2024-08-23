@@ -11,6 +11,7 @@
 #define APCLIENT_DEBUG
 #include "apclient.hpp"
 #include "apuuid.hpp"
+#include "Unreal/FProperty.hpp"
 #include "Unreal/FText.hpp"
 #include "GameData.hpp"
 #include "Engine.hpp"
@@ -21,6 +22,8 @@
 #include "StringOps.hpp"
 
 namespace Client {
+    using namespace RC::Unreal;
+
     using std::string;
     using std::list;
 
@@ -70,7 +73,7 @@ namespace Client {
             ap->set_room_info_handler([slot_name, password]() {
                 Log("Received room info");
                 int items_handling = 0b111;
-                APClient::Version version{ 0, 7, 0 };
+                APClient::Version version{ 0, 8, 0 };
                 ap->ConnectSlot(slot_name, password, items_handling, {}, version);
                 });
 
@@ -239,6 +242,32 @@ namespace Client {
         }
 
         ap->Say(input);
+    }
+
+
+    bool Client::TimeTrial_IsSuccess(UObject* timeTrialObj)
+    {
+        if (ap == nullptr) {
+            return false;
+        }
+
+        auto bestTime = *(double*)timeTrialObj->GetValuePtrByPropertyName(STR("bestTime"));
+        auto goalTimes = *(TArray<double>*)timeTrialObj->GetValuePtrByPropertyName(STR("goalTimes"));
+
+        return bestTime <= goalTimes[0];
+    }
+
+    bool Client::TimeTrial_WasClaimed()
+    {
+        if (ap == nullptr) {
+            return true;
+        }
+
+        auto timeTrial_locId = GameData::MapToTimeTrial(Engine::GetCurrentMap());
+        if (timeTrial_locId == 0LL)
+            return true;
+
+        return ap->get_checked_locations().contains(timeTrial_locId);
     }
 
 

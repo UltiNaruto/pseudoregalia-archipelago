@@ -55,19 +55,27 @@ namespace GameData {
             {2365810016, ItemType::Ability},
             {2365810017, ItemType::Ability},
             {2365810018, ItemType::Ability},
-
+            {2365810019, ItemType::Ability},
+            {2365810020, ItemType::Ability},
+            {2365810021, ItemType::Ability},
+            {2365810022, ItemType::Ability},
+            {2365810023, ItemType::Ability},
+            {2365810024, ItemType::Ability},
+            {2365810025, ItemType::Ability},
             {2365810026, ItemType::Ability},
-            {2365810027, ItemType::Ability},
-            {2365810028, ItemType::Ability},
 
-            {2365810021, ItemType::MajorKey},
-            {2365810022, ItemType::MajorKey},
-            {2365810023, ItemType::MajorKey},
-            {2365810024, ItemType::MajorKey},
-            {2365810025, ItemType::MajorKey},
+            {2365810034, ItemType::Ability},
+            {2365810035, ItemType::Ability},
+            {2365810036, ItemType::Ability},
 
-            {2365810019, ItemType::HealthPiece},
-            {2365810020, ItemType::SmallKey},
+            {2365810029, ItemType::MajorKey},
+            {2365810030, ItemType::MajorKey},
+            {2365810031, ItemType::MajorKey},
+            {2365810032, ItemType::MajorKey},
+            {2365810033, ItemType::MajorKey},
+
+            {2365810027, ItemType::HealthPiece},
+            {2365810028, ItemType::SmallKey},
         };
 
         const unordered_map<int64_t, wstring> lookup_item_id_to_upgrade = {
@@ -81,17 +89,25 @@ namespace GameData {
             {2365810008, L"wallRide"},
             {2365810009, L"Light"},
             {2365810010, L"projectile"},
-            {2365810011, L"extraKick"},
-            {2365810012, L"airRecovery"},
-            {2365810013, L"mobileHeal"},
-            {2365810014, L"magicHaste"},
-            {2365810015, L"healBoost"},
-            {2365810016, L"damageBoost"},
-            {2365810017, L"magicPiece"},
-            {2365810018, L"outfitPro"},
-            {2365810026, L"progressiveSlide"},
-            {2365810027, L"extraKick"}, // Used for split kicks, just treats them like heliacal
-            {2365810028, L"progressiveBreaker"},
+            {2365810011, L"map"},
+            {2365810012, L"extraKick"},
+            {2365810013, L"airRecovery"},
+            {2365810014, L"mobileHeal"},
+            {2365810015, L"magicHaste"},
+            {2365810016, L"healBoost"},
+            {2365810017, L"damageBoost"},
+            {2365810018, L"magicPiece"},
+            {2365810019, L"outfitPro"},
+            {2365810020, L"outfitFaith"},
+            {2365810021, L"outfitShoujo"},
+            {2365810022, L"outfitKnight"},
+            {2365810023, L"outfitJam"},
+            {2365810024, L"outfitClassy"},
+            {2365810025, L"outfitSweater"},
+            {2365810026, L"outfitPast"},
+            {2365810034, L"progressiveSlide"},
+            {2365810035, L"extraKick"}, // Used for split kicks, just treats them like heliacal
+            {2365810036, L"progressiveBreaker"},
         };
 
         // This is for location ids, not items, so it can't be combined with the tables above.
@@ -103,6 +119,7 @@ namespace GameData {
             {2365810005, Map::Dungeon},
             {2365810006, Map::Dungeon},
             {2365810007, Map::Dungeon},
+            {2365810057, Map::Dungeon},
             {2365810008, Map::Castle},
             {2365810009, Map::Castle},
             {2365810010, Map::Castle},
@@ -115,30 +132,35 @@ namespace GameData {
             {2365810017, Map::Castle},
             {2365810018, Map::Castle},
             {2365810019, Map::Castle},
+            {2365810051, Map::Castle},
             {2365810020, Map::Keep},
             {2365810021, Map::Keep},
             {2365810022, Map::Keep},
             {2365810023, Map::Keep},
             {2365810024, Map::Keep},
             {2365810025, Map::Keep},
+            {2365810052, Map::Keep},
             {2365810026, Map::Library},
             {2365810027, Map::Library},
             {2365810028, Map::Library},
             {2365810029, Map::Library},
-            {2365810051, Map::Library},
-            {2365810052, Map::Library},
             {2365810053, Map::Library},
+            {2365810058, Map::Library},
+            {2365810059, Map::Library},
+            {2365810060, Map::Library},
             {2365810030, Map::Theatre},
             {2365810031, Map::Theatre},
             {2365810032, Map::Theatre},
             {2365810033, Map::Theatre},
             {2365810034, Map::Theatre},
             {2365810035, Map::Theatre},
+            {2365810054, Map::Theatre},
             {2365810036, Map::Bailey},
             {2365810037, Map::Bailey},
             {2365810038, Map::Bailey},
             {2365810039, Map::Bailey},
             {2365810040, Map::Bailey},
+            {2365810055, Map::Bailey},
             {2365810041, Map::Underbelly},
             {2365810042, Map::Underbelly},
             {2365810043, Map::Underbelly},
@@ -147,8 +169,10 @@ namespace GameData {
             {2365810046, Map::Underbelly},
             {2365810047, Map::Underbelly},
             {2365810048, Map::Underbelly},
+            {2365810056, Map::Underbelly},
             {2365810049, Map::Tower},
             {2365810050, Map::Tower},
+            {2365810057, Map::Tower},
         };
     } // End private members
 
@@ -202,6 +226,8 @@ namespace GameData {
                 {2365810006, Collectible(FVector(7487, 1407, 4250))},
             // Strong Eyes
                 {2365810007, Collectible(FVector(750, 8850, 2650))},
+            // Time Trial
+                {2365810057, Collectible(FVector(-3350, -4300, 850))},
                     }},
             {Map::Castle, unordered_map<int64_t, Collectible> {
             // Indignation
@@ -214,8 +240,8 @@ namespace GameData {
                 {2365810011, Collectible(FVector(11850, 1000, -300))},
             // Floater In Courtyard
                 {2365810012, Collectible(FVector(-5000, -600, 2050))},
-            // Locked Door
-                {2365810013, Collectible(FVector(2700, -1700, -500))},
+            // Time Trial
+                {2365810013, Collectible(FVector(3200, -1700, -500))},
             // Platform In Main Halls
                 {2365810014, Collectible(FVector(7950, 2750, -200))},
             // Tall Room Near Wheel Crawlers
@@ -228,6 +254,8 @@ namespace GameData {
                 {2365810018, Collectible(FVector(-9600, 21750, 5400))},
             // Near Theatre Front
                 {2365810019, Collectible(FVector(3390, 21150, 6600))},
+            // Memento
+                {2365810051, Collectible(FVector(8950, 6450, -175))},
                     }},
             {Map::Keep, unordered_map<int64_t, Collectible> {
             // Strikebreak
@@ -242,6 +270,8 @@ namespace GameData {
                 {2365810024, Collectible(FVector(-3900, -6109, -450))},
             // Sunsetter
                 {2365810025, Collectible(FVector(-3000, 4900, -400))},
+            // Time Trial
+                {2365810052, Collectible(FVector(14350, 400, 1250))},
                     }},
             {Map::Library, unordered_map<int64_t, Collectible> {
             // Sun Greaves
@@ -252,12 +282,14 @@ namespace GameData {
                 {2365810028, Collectible(FVector(-1300, -6750, -700))},
             // Locked Door Left
                 {2365810029, Collectible(FVector(-3750, -4170, -700))},
+            // Time Trial
+                {2365810053, Collectible(FVector(-2850, 3600, 900))},
             // Split Greaves 1
-                {2365810051, Collectible(FVector(-4150, 9160, 0), vector<pair<string, int>>{{"split_sun_greaves", true}})},
+                {2365810058, Collectible(FVector(-4150, 9160, 0), vector<pair<string, int>>{{"split_sun_greaves", true}})},
             // Split Greaves 2
-                {2365810052, Collectible(FVector(-4100, 9250, -100), vector<pair<string, int>>{{"split_sun_greaves", true}})},
+                {2365810059, Collectible(FVector(-4100, 9250, -100), vector<pair<string, int>>{{"split_sun_greaves", true}})},
             // Split Greaves 3
-                {2365810053, Collectible(FVector(-4200, 9250, -100), vector<pair<string, int>>{{"split_sun_greaves", true}})},
+                {2365810060, Collectible(FVector(-4200, 9250, -100), vector<pair<string, int>>{{"split_sun_greaves", true}})},
                     }},
             {Map::Theatre, unordered_map<int64_t, Collectible> {
             // Soul Cutter
@@ -272,6 +304,8 @@ namespace GameData {
                 {2365810034, Collectible(FVector(255, 1150, 50))},
             // Corner Beam
                 {2365810035, Collectible(FVector(-14100, -150, 1950))},
+            // Time Trial
+                {2365810054, Collectible(FVector(-14750, 3900, 100))},
                     }},
             {Map::Bailey, unordered_map<int64_t, Collectible> {
             // Solar Wind
@@ -284,6 +318,8 @@ namespace GameData {
                 {2365810039, Collectible(FVector(-1787, 5236, 650))},
             // Inside Building
                 {2365810040, Collectible(FVector(3007, 3457, 300))},
+            // Time Trial
+                {2365810055, Collectible(FVector(1150, 5250, -600))},
                     }},
             {Map::Underbelly, unordered_map<int64_t, Collectible> {
             // Ascendant Light
@@ -302,12 +338,16 @@ namespace GameData {
                 {2365810047, Collectible(FVector(11300, 12700, 3107))},
             // Surrounded By Holes
                 {2365810048, Collectible(FVector(33050, 24100, 3850))},
+            // Time Trial
+                {2365810056, Collectible(FVector(1250, 18000, 3000))},
                     }},
             {Map::Tower, unordered_map<int64_t, Collectible> {
             // Cling Gem
                 {2365810049, Collectible(FVector(13350, 5250, 4150))},
             // Atop The Tower
                 {2365810050, Collectible(FVector(9650, 5250, 7100))},
+            // Time Trial
+                {2365810057, Collectible(FVector(10750, 3050, 4000))},
                     }},
         };
 
@@ -322,6 +362,7 @@ namespace GameData {
             {L"wallRide", 0},
             {L"Light", 0},
             {L"projectile", 0},
+            {L"map", 0},
             {L"extraKick", 0},
             {L"airRecovery", 0},
             {L"mobileHeal", 0},
@@ -330,6 +371,13 @@ namespace GameData {
             {L"damageBoost", 0},
             {L"magicPiece", 0},
             {L"outfitPro", 0},
+            {L"outfitShoujo", 0},
+            {L"outfitKnight", 0},
+            {L"outfitPast", 0},
+            {L"outfitJam", 0},
+            {L"outfitFaith", 0},
+            {L"outfitClassy", 0},
+            {L"outfitSweater", 0},
         };
 
         slidejump_owned = false;
@@ -359,6 +407,7 @@ namespace GameData {
             {L"wallRide", 0},
             {L"Light", 0},
             {L"projectile", 0},
+            {L"map", 0},
             {L"extraKick", 0},
             {L"airRecovery", 0},
             {L"mobileHeal", 0},
@@ -367,6 +416,13 @@ namespace GameData {
             {L"damageBoost", 0},
             {L"magicPiece", 0},
             {L"outfitPro", 0},
+            {L"outfitShoujo", 0},
+            {L"outfitKnight", 0},
+            {L"outfitPast", 0},
+            {L"outfitJam", 0},
+            {L"outfitFaith", 0},
+            {L"outfitClassy", 0},
+            {L"outfitSweater", 0},
         };
     }
 
@@ -390,7 +446,7 @@ namespace GameData {
             break;
         case ItemType::MajorKey:
             // Remove prefix digits from id to assign directly to major_keys array
-            major_keys[id - 2365810021] = true;
+            major_keys[id - 2365810029] = true;
             break;
         default:
             Log(L"You were sent an item, but its id wasn't recognized. Verify that you're playing on the same version this seed was generated on.");
@@ -427,5 +483,21 @@ namespace GameData {
 
     bool GameData::SlideJumpDisabled() {
         return slidejump_disabled;
+    }
+
+    int64_t GameData::MapToTimeTrial(Map map) {
+        switch (map)
+        {
+            case Map::Castle:
+                return 2365810013LL;
+            default:
+                auto collectibles = collectible_table.at(map);
+                auto result = std::find_if(collectibles.begin(), collectibles.end(), [](std::pair<int64_t, Collectible> c) {
+                    return c.first >= 2365810052LL && c.first <= 2365810057LL;
+                });
+                if (result != collectibles.end())
+                    return (*result).first;
+        }
+        return 0LL;
     }
 }

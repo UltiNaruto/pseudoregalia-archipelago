@@ -38,6 +38,7 @@ namespace GameData {
 	void CheckLocation(const int64_t);
 	ItemType ReceiveItem(int64_t);
 	Map MapNameToEnum(std::wstring);
+	int64_t MapToTimeTrial(Map);
 	bool ToggleSlideJump();
 	bool SlideJumpDisabled();
 }

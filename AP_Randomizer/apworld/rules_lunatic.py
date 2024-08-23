@@ -225,8 +225,10 @@ class PseudoregaliaLunaticRules(PseudoregaliaRulesHelpers):
                 or self.has_slide(state) and self.get_kicks(state, 1)
                 or self.get_kicks(state, 3)
                 or self.has_gem(state),
-            "Castle Sansa - Locked Door": lambda state:
+            "Castle Sansa - Time Trial": lambda state:
                 self.has_small_keys(state),
+            "Castle Sansa - Memento": lambda state:
+                True,
             "Castle Sansa - Platform In Main Halls": lambda state:
                 self.has_gem(state)
                 or self.kick_or_plunge(state, 1)

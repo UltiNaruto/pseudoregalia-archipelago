@@ -1,10 +1,10 @@
 #pragma once
 #include <mutex>
 #include <queue>
-#include "Unreal/TArray.hpp"
 #include "Unreal/World.hpp"
 #include "Engine.hpp"
 #include "Logger.hpp"
+#include <Client.hpp>
 
 namespace Engine {
 	using namespace RC::Unreal; // Give Engine easy access to Unreal objects
@@ -98,6 +98,36 @@ namespace Engine {
 	}
 
 	// Calls blueprint's AP_SpawnCollectible function for each unchecked collectible in a map.
+	void Engine::SpawnTimeTrialCollectible() {
+		// This function spawns the time trial reward once the player has reached
+		struct CollectibleSpawnInfo {
+			int64_t new_id;
+			FVector position;
+		};
+		std::unordered_map<int64_t, GameData::Collectible> collectible_map = GameData::GetCollectiblesOfZone(GetCurrentMap());
+		int64_t id = GameData::MapToTimeTrial(GetCurrentMap());
+
+		// Return if there are no time trials in this map
+		if (id == 0LL)
+			return;
+
+		auto collectible = collectible_map.at(id);
+
+		// Return if the collectible shouldn't be spawned based on options
+		if (!collectible.CanCreate(GameData::GetOptions())) {
+			Log(L"Collectible with id " + to_wstring(id) + L" was not spawned because its required options were not met.");
+			return;
+		}
+		if (collectible.IsChecked()) {
+			Log(L"Collectible with id " + to_wstring(id) + L" has already been checked");
+			return;
+		}
+		Log(L"Spawning collectible with id " + to_wstring(id));
+		shared_ptr<void> collectible_info(new CollectibleSpawnInfo{ id, collectible.GetPosition() });
+		ExecuteBlueprintFunction(L"BP_APRandomizerInstance_C", L"AP_SpawnCollectible", collectible_info);
+	}
+
+	// Calls blueprint's AP_SpawnCollectible function for each unchecked collectible in a map.
 	void Engine::SpawnCollectibles() {
 		// This function must loop through instead of calling once with an array;
 		// as of 10/11/23 the params struct method I use can't easily represent FVectors or FTransforms in C++.
@@ -108,7 +138,32 @@ namespace Engine {
 			FVector position;
 		};
 		std::unordered_map<int64_t, GameData::Collectible> collectible_map = GameData::GetCollectiblesOfZone(GetCurrentMap());
+		uint64_t timeTrial = GameData::MapToTimeTrial(GetCurrentMap());
+		std::vector<UObject*> timeTrial_objs;
+		UObject* timeTrial_obj = nullptr;
 		for (const auto& [id, collectible] : collectible_map) {
+			// We don't spawn time trial collectibles from this function
+			// except if the Time Trial was already completed
+			if (id == timeTrial)
+			{
+				UObjectGlobals::FindAllOf(L"BP_TimeTrial_C", timeTrial_objs);
+
+				// We didn't find any time trial
+				if (timeTrial_objs.size() <= 0)
+					continue;
+
+				// Do not spawn the reward again
+				if (Client::TimeTrial_WasClaimed())
+					continue;
+
+				// always consider first one since Castle Sansa has an extra hidden time trial
+				timeTrial_obj = timeTrial_objs[0];
+
+				// Check if we completed the time trial (+ has beaten bronze time)
+				if (!Client::TimeTrial_IsSuccess(timeTrial_obj))
+					continue;
+			}
+
 			// Return if the collectible shouldn't be spawned based on options
 			if (!collectible.CanCreate(GameData::GetOptions())) {
 				Log(L"Collectible with id " + to_wstring(id) + L" was not spawned because its required options were not met.");

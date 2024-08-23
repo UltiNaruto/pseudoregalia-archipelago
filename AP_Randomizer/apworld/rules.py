@@ -42,6 +42,7 @@ class PseudoregaliaRulesHelpers:
         }
 
         self.location_rules = {
+            "Dilapidated Dungeon - Time Trial": lambda state: True,
             "Empty Bailey - Solar Wind": lambda state:
                 self.has_slide(state),
             "Empty Bailey - Cheese Bell": lambda state:
@@ -57,6 +58,9 @@ class PseudoregaliaRulesHelpers:
                 self.has_plunge(state)
                 or self.has_gem(state)
                 or self.get_kicks(state, 3),
+            "Empty Bailey - Time Trial": lambda state: True,
+            "Sansa Keep - Time Trial": lambda state: True,
+            "The Underbelly - Time Trial": lambda state: True,
             "Twilight Theatre - Soul Cutter": lambda state:
                 self.can_strikebreak(state),
             "Twilight Theatre - Corner Beam": lambda state:
@@ -75,15 +79,18 @@ class PseudoregaliaRulesHelpers:
             "Twilight Theatre - Center Stage": lambda state:
                 self.can_soulcutter(state) and self.has_gem(state) and self.can_slidejump(state)
                 or self.can_soulcutter(state) and self.has_gem(state) and self.get_kicks(state, 1),
+            "Twilight Theatre - Time Trial": lambda state: True,
             "Tower Remains - Cling Gem": lambda state:
                 self.get_kicks(state, 3),
             "Tower Remains - Atop The Tower": lambda state: True,
+            "Tower Remains - Time Trial": lambda state: True,
         }
 
     def has_breaker(self, state) -> bool:
         return state.has_any({"Dream Breaker", "Progressive Dream Breaker"}, self.player)
 
     def has_slide(self, state) -> bool:
+        # TODO: Consider nerfed ultras with Slide only
         return state.has_any({"Slide", "Progressive Slide"}, self.player)
 
     def has_plunge(self, state) -> bool:

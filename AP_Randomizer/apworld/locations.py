@@ -43,6 +43,10 @@ location_table = {
     "Dilapidated Dungeon - Strong Eyes": PseudoregaliaLocationData(
         code=2365810007,
         region="Dungeon Strong Eyes",),
+    "Dilapidated Dungeon - Time Trial": PseudoregaliaLocationData(
+        code=2365810052,
+        region="Dungeon Mirror",
+        locked_item="Sol Sister"),
 
     "Castle Sansa - Indignation": PseudoregaliaLocationData(
         code=2365810008,
@@ -59,9 +63,10 @@ location_table = {
     "Castle Sansa - Floater In Courtyard": PseudoregaliaLocationData(
         code=2365810012,
         region="Castle Main",),
-    "Castle Sansa - Locked Door": PseudoregaliaLocationData(
+    "Castle Sansa - Time Trial": PseudoregaliaLocationData(
         code=2365810013,
-        region="Castle Main",),
+        region="Castle Main",
+        locked_item="Professional"),
     "Castle Sansa - Platform In Main Halls": PseudoregaliaLocationData(
         code=2365810014,
         region="Castle Main",),
@@ -80,6 +85,9 @@ location_table = {
     "Castle Sansa - Near Theatre Front": PseudoregaliaLocationData(
         code=2365810019,
         region="Castle Moon Room",),
+    "Castle Sansa - Memento": PseudoregaliaLocationData(
+        code=2365810051,
+        region="Castle Main",),
 
     "Sansa Keep - Strikebreak": PseudoregaliaLocationData(
         code=2365810020,
@@ -99,6 +107,10 @@ location_table = {
     "Sansa Keep - Sunsetter": PseudoregaliaLocationData(
         code=2365810025,
         region="Keep Sunsetter"),
+    "Sansa Keep - Time Trial": PseudoregaliaLocationData(
+        code=2365810052,
+        region="Keep Path To Throne",
+        locked_item="Guardian"),
 
     "Listless Library - Sun Greaves": PseudoregaliaLocationData(
         code=2365810026,
@@ -113,6 +125,10 @@ location_table = {
     "Listless Library - Locked Door Left": PseudoregaliaLocationData(
         code=2365810029,
         region="Library Locked",),
+    "Listless Library - Time Trial": PseudoregaliaLocationData(
+        code=2365810053,
+        region="Library Main",
+        locked_item="Sleepytime"),
 
     "Twilight Theatre - Soul Cutter": PseudoregaliaLocationData(
         code=2365810030,
@@ -132,6 +148,10 @@ location_table = {
     "Twilight Theatre - Corner Beam": PseudoregaliaLocationData(
         code=2365810035,
         region="Theatre Pillar",),
+    "Twilight Theatre - Time Trial": PseudoregaliaLocationData(
+        code=2365810054,
+        region="Theatre Pillar",
+        locked_item="Classy"),
 
     "Empty Bailey - Solar Wind": PseudoregaliaLocationData(
         code=2365810036,
@@ -148,6 +168,10 @@ location_table = {
     "Empty Bailey - Inside Building": PseudoregaliaLocationData(
         code=2365810040,
         region="Empty Bailey",),
+    "Empty Bailey - Time Trial": PseudoregaliaLocationData(
+        code=2365810055,
+        region="Empty Bailey",
+        locked_item="Soldier"),
 
     "The Underbelly - Ascendant Light": PseudoregaliaLocationData(
         code=2365810041,
@@ -173,6 +197,10 @@ location_table = {
     "The Underbelly - Surrounded By Holes": PseudoregaliaLocationData(
         code=2365810048,
         region="Underbelly Hole",),
+    "The Underbelly - Time Trial": PseudoregaliaLocationData(
+        code=2365810056,
+        region="Underbelly Main Upper",
+        locked_item="XIX"),
 
     "Tower Remains - Cling Gem": PseudoregaliaLocationData(
         code=2365810049,
@@ -180,17 +208,21 @@ location_table = {
     "Tower Remains - Atop The Tower": PseudoregaliaLocationData(
         code=2365810050,
         region="The Great Door",),
+    "Tower Remains - Time Trial": PseudoregaliaLocationData(
+        code=2365810057,
+        region="The Great Door",
+        locked_item="Bleeding Heart"),
 
     "Listless Library - Sun Greaves 1": PseudoregaliaLocationData(
-        code=2365810051,
+        code=2365810058,
         region="Library Greaves",
         can_create=lambda multiworld, player: bool(multiworld.split_sun_greaves[player])),
     "Listless Library - Sun Greaves 2": PseudoregaliaLocationData(
-        code=2365810052,
+        code=2365810059,
         region="Library Greaves",
         can_create=lambda multiworld, player: bool(multiworld.split_sun_greaves[player])),
     "Listless Library - Sun Greaves 3": PseudoregaliaLocationData(
-        code=2365810053,
+        code=2365810060,
         region="Library Greaves",
         can_create=lambda multiworld, player: bool(multiworld.split_sun_greaves[player])),
 
