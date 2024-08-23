@@ -49,66 +49,98 @@ item_table: Dict[str, PseudoregaliaItemData] = {
         code=2365810010,
         classification=ItemClassification.progression,
         can_create=lambda multiworld, player: not bool(multiworld.progressive_breaker[player])),
+    "Memento": PseudoregaliaItemData(
+        code=2365810011,
+        classification=ItemClassification.useful),
 
     "Heliacal Power": PseudoregaliaItemData(
-        code=2365810011,
+        code=2365810012,
         classification=ItemClassification.progression,
         can_create=lambda multiworld, player: not bool(multiworld.split_sun_greaves[player])),
     "Aerial Finesse": PseudoregaliaItemData(
-        code=2365810012,
-        classification=ItemClassification.filler),
-    "Pilgrimage": PseudoregaliaItemData(
         code=2365810013,
         classification=ItemClassification.filler),
-    "Empathy": PseudoregaliaItemData(
+    "Pilgrimage": PseudoregaliaItemData(
         code=2365810014,
         classification=ItemClassification.filler),
-    "Good Graces": PseudoregaliaItemData(
+    "Empathy": PseudoregaliaItemData(
         code=2365810015,
-        classification=ItemClassification.useful),
-    "Martial Prowess": PseudoregaliaItemData(
+        classification=ItemClassification.filler),
+    "Good Graces": PseudoregaliaItemData(
         code=2365810016,
         classification=ItemClassification.useful),
-    "Clear Mind": PseudoregaliaItemData(
+    "Martial Prowess": PseudoregaliaItemData(
         code=2365810017,
-        classification=ItemClassification.filler),
-    "Professionalism": PseudoregaliaItemData(
+        classification=ItemClassification.useful),
+    "Clear Mind": PseudoregaliaItemData(
         code=2365810018,
         classification=ItemClassification.filler),
+    "Professional": PseudoregaliaItemData(
+        code=2365810019,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Sol Sister": PseudoregaliaItemData(
+        code=2365810020,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Guardian": PseudoregaliaItemData(
+        code=2365810021,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Soldier": PseudoregaliaItemData(
+        code=2365810022,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "XIX": PseudoregaliaItemData(
+        code=2365810023,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Classy": PseudoregaliaItemData(
+        code=2365810024,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Sleepytime": PseudoregaliaItemData(
+        code=2365810025,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
+    "Bleeding Heart": PseudoregaliaItemData(
+        code=2365810026,
+        classification=ItemClassification.filler,
+        can_create=lambda multiworld, player: False),
 
     "Health Piece": PseudoregaliaItemData(
-        code=2365810019,
+        code=2365810027,
         classification=ItemClassification.useful),
     "Small Key": PseudoregaliaItemData(
-        code=2365810020,
+        code=2365810028,
         classification=ItemClassification.progression),
 
     "Major Key - Empty Bailey": PseudoregaliaItemData(
-        code=2365810021,
+        code=2365810029,
         classification=ItemClassification.progression),
     "Major Key - The Underbelly": PseudoregaliaItemData(
-        code=2365810022,
+        code=2365810030,
         classification=ItemClassification.progression),
     "Major Key - Tower Remains": PseudoregaliaItemData(
-        code=2365810023,
+        code=2365810031,
         classification=ItemClassification.progression),
     "Major Key - Sansa Keep": PseudoregaliaItemData(
-        code=2365810024,
+        code=2365810032,
         classification=ItemClassification.progression),
     "Major Key - Twilight Theatre": PseudoregaliaItemData(
-        code=2365810025,
+        code=2365810033,
         classification=ItemClassification.progression),
 
     "Progressive Slide": PseudoregaliaItemData(
-        code=2365810026,
+        code=2365810034,
         classification=ItemClassification.progression,
         can_create=lambda multiworld, player: bool(multiworld.progressive_slide[player])),
     "Air Kick": PseudoregaliaItemData(
-        code=2365810027,
+        code=2365810035,
         classification=ItemClassification.progression,
         can_create=lambda multiworld, player: bool(multiworld.split_sun_greaves[player])),
     "Progressive Dream Breaker": PseudoregaliaItemData(
-        code=2365810028,
+        code=2365810036,
         classification=ItemClassification.progression,
         can_create=lambda multiworld, player: bool(multiworld.progressive_breaker[player])),
 
@@ -144,7 +176,7 @@ item_groups: Dict[str, Set[str]] = {
     "slidejump": {"Solar Wind"},
     "wallride": {"Cling Gem"},
     "pogo": {"Ascendant Light"},
-    "floof": {"Professionalism"},
+    "floof": {"Professional"},
     "heliacal power": {"Air Kick"},
     "aspects": {"Indignation",  # some nice to have groups when sorting local/non local items in yaml etc, does not include "Memento" aka new map powerup
                 "Aerial Finesse",

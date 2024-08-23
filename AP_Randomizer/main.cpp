@@ -25,6 +25,7 @@ public:
         bool isPressed = false;
     };
     bool returncheck_hooked = false;
+    bool timetrial_manageResult_hooked = false;
     bool toggleslidejump_hooked = false;
     bool deathlink_hooked = false;
     bool copytext_hooked = false;
@@ -90,6 +91,22 @@ public:
             auto deathlink = [](UnrealScriptFunctionCallableContext& context, void* customdata) {
                 Client::SendDeathLink();
                 };
+            auto timetrial_manageResult = [](UnrealScriptFunctionCallableContext& context, void* customdata) {
+                auto bestTime = *context.Context->GetPropertyByName(STR("bestTime"))->ContainerPtrToValuePtr<double>(context.Context);
+                auto goalTimes = *context.Context->GetPropertyByName(STR("goalTimes"))->ContainerPtrToValuePtr<TArray<double>>(context.Context);
+                // Do not spawn the reward again
+                if (Client::TimeTrial_WasClaimed())
+                {
+                    Log(L"Reward has already been claimed!");
+                    return;
+                }
+                if (!Client::TimeTrial_IsSuccess(bestTime, goalTimes))
+                {
+                    Log(L"Failed the time trial!");
+                    return;
+                }
+                Engine::SpawnTimeTrialCollectible();
+                };
 
             if (!returncheck_hooked
                 && actor->GetName().starts_with(STR("BP_APCollectible"))) {
@@ -143,6 +160,22 @@ public:
                     }
                     Unreal::UObjectGlobals::RegisterHook(death_function, EmptyFunction, deathlink, nullptr);
                     deathlink_hooked = true;
+                }
+            }
+
+            if (actor->GetName().starts_with(L"BP_TimeTrial")) {
+                if (!timetrial_manageResult_hooked)
+                {
+                    UFunction* manageResult = actor->GetFunctionByName(L"manageResult");
+                    if (!manageResult) {
+                        Log(L"Could not find function \"manageResult\" in BP_TimeTrial.", LogType::Error);
+                        return;
+                    }
+                    else {
+                        Log(L"Establishing hook for manageResult.");
+                    }
+                    Unreal::UObjectGlobals::RegisterHook(manageResult, EmptyFunction, timetrial_manageResult, nullptr);
+                    timetrial_manageResult_hooked = true;
                 }
             }
             });

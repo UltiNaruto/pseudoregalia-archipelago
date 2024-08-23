@@ -216,8 +216,10 @@ class PseudoregaliaHardRules(PseudoregaliaRulesHelpers):
                 or self.kick_or_plunge(state, 4)
                 or self.has_gem(state)
                 or self.knows_obscure(state) and self.can_bounce(state) and self.get_kicks(state, 1),
-            "Castle Sansa - Locked Door": lambda state:
+            "Castle Sansa - Time Trial": lambda state:
                 self.has_small_keys(state),
+            "Castle Sansa - Memento": lambda state:
+                True,
             "Castle Sansa - Platform In Main Halls": lambda state:
                 self.kick_or_plunge(state, 1)
                 or self.has_gem(state),

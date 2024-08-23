@@ -9,6 +9,7 @@ namespace Engine {
 	void ExecuteBlueprintFunction(std::variant<std::wstring, UObject*>, std::wstring, std::shared_ptr<void>);
 	void OnTick(UObject*);
 	void SyncItems();
+	void SpawnTimeTrialCollectible();
 	void SpawnCollectibles();
 	void DespawnCollectible(const int64_t);
 	GameData::Map GetCurrentMap();
